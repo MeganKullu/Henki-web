@@ -41,8 +41,11 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [deptOpen, setDeptOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { itemCount, toggleCart } = useCartStore();
-  const count = itemCount();
+  const count = mounted ? itemCount() : 0;
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -57,7 +60,7 @@ export default function Header() {
     <>
       {/* ── TIER 1: Top bar ──────────────────────────────────────── */}
       <div className="bg-white border-b border-[#e8e8e8] hidden xl:block">
-        <div className="max-w-[1200px] mx-auto px-4 h-9 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-4 h-9 flex items-center justify-between">
           <span className="text-[13px] text-[#8c98a4]">
             Welcome to Henki Electronics — Kenya&apos;s Premium Store
           </span>
@@ -89,7 +92,7 @@ export default function Header() {
 
       {/* ── TIER 2: Main header ──────────────────────────────────── */}
       <div className="bg-white border-b border-[#e8e8e8]">
-        <div className="max-w-[1200px] mx-auto px-4 py-3 xl:py-4">
+        <div className="max-w-[1400px] mx-auto px-4 py-3 xl:py-4">
           <div className="flex items-center gap-4 xl:gap-6">
 
             {/* Mobile hamburger */}
@@ -225,7 +228,7 @@ export default function Header() {
 
       {/* ── TIER 3: Category nav ─────────────────────────────────── */}
       <nav className="bg-[#333e48] sticky top-0 z-50 hidden xl:block">
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1400px] mx-auto px-4">
           <ul className="flex items-center">
 
             {/* All Departments dropdown */}

@@ -205,7 +205,7 @@ export default async function ProductsPage({
         : "All Products";
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4 py-6">
+    <div className="max-w-[1400px] mx-auto px-4 py-6">
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-4">
         <Link href="/" className="hover:text-[#fed700]">

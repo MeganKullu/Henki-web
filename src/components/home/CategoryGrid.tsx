@@ -43,7 +43,7 @@ const categories = [
 export default function CategoryGrid() {
   return (
     <div className="border-b border-[#eeeeee]">
-      <div className="max-w-[1200px] mx-auto px-4 py-6">
+      <div className="max-w-[1400px] mx-auto px-4 py-6">
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-0 border border-[#eeeeee] divide-x divide-[#eeeeee]">
           {categories.map((cat) => (
             <Link

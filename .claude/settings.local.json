@@ -19,7 +19,9 @@
       "Bash(cmd.exe /c \"taskkill /PID 27240 /F\")",
       "Bash(curl -s http://localhost:3000/)",
       "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('New Collection'\\) print\\(html[max\\(0,idx-100\\):idx+1500]\\) \")",
-      "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('pills-tab\\\\\"'\\) print\\(html[max\\(0,idx-600\\):idx+200]\\) \")"
+      "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('pills-tab\\\\\"'\\) print\\(html[max\\(0,idx-600\\):idx+200]\\) \")",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(curl -s http://localhost:3001)"
     ]
   }
 }

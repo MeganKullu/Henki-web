@@ -144,7 +144,7 @@ export default function FeaturedProducts({
       ? base
       : base.filter((p) => p.tags.includes(activeTab));
 
-  const display = shown.slice(0, 4);
+  const display = shown.slice(0, 6);
 
   const href = categorySlug
     ? `/products?category=${categorySlug}`
@@ -194,22 +194,17 @@ export default function FeaturedProducts({
         ))}
       </div>
 
-      {/* ── Product grid ── */}
+      {/* ── Product grid: 2 / 4 / 6 columns ── */}
       {display.length > 0 ? (
         <div
-          className="grid grid-cols-2 md:grid-cols-4"
-          style={{
-            borderTop: "1px solid #eeeeee",
-            borderLeft: "1px solid #eeeeee",
-          }}
+          className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6"
+          style={{ borderTop: "1px solid #eeeeee", borderLeft: "1px solid #eeeeee" }}
         >
           {display.map((product) => (
             <div
               key={product.id}
-              style={{
-                borderRight: "1px solid #eeeeee",
-                borderBottom: "1px solid #eeeeee",
-              }}
+              className="flex flex-col"
+              style={{ borderRight: "1px solid #eeeeee", borderBottom: "1px solid #eeeeee" }}
             >
               <ProductCard product={product} />
             </div>

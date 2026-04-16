@@ -13,7 +13,7 @@ export default function Footer() {
 
       {/* Newsletter bar */}
       <div className="bg-[#fed700]">
-        <div className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Mail size={22} className="text-[#333e48]" />
             <div>
@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
 
       {/* Main footer */}
-      <div className="max-w-[1200px] mx-auto px-4 py-10">
+      <div className="max-w-[1400px] mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
 
           {/* Brand */}
@@ -179,7 +179,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="max-w-[1400px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
           <span className="text-xs text-gray-500">
             © {new Date().getFullYear()} Henki Electronics. All rights reserved.
           </span>

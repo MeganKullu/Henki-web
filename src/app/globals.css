@@ -195,6 +195,45 @@
   font-weight: 700;
 }
 
+/* ── Promo cards marquee (mobile) ── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Each card uses margin-right so the -50% translate lands exactly on the seam */
+.promo-ticker {
+  display: flex;
+  animation: marquee-scroll 22s linear infinite;
+  width: max-content;
+}
+.promo-ticker:hover {
+  animation-play-state: paused;
+}
+.promo-ticker-card {
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+/* ── Mobile horizontal product scroll ── */
+.products-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+}
+.products-scroll::-webkit-scrollbar {
+  display: none;
+}
+.products-scroll > * {
+  scroll-snap-align: start;
+  flex: 0 0 50%;
+  min-width: 0;
+  border-right: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
