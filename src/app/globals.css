@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #fed700;
+  --color-primary-dark: #d8b700;
+  --color-primary-light: #ffe033;
+  --color-navy: #333e48;
+  --color-navy-dark: #1e2022;
+  --color-navy-light: #4a5568;
+  --color-background: #ffffff;
+  --color-foreground: #333e48;
+  --color-muted: #8c98a4;
+  --color-border: #eeeeee;
+  --color-surface: #f9f9f9;
+  --font-sans: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-primary);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-navy-dark);
+    font-weight: 700;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: 2px solid var(--color-primary);
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-navy-dark);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-navy);
+    color: var(--color-navy);
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background: transparent;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-navy);
+    color: white;
+  }
+
+  .card {
+    background: white;
+    border-radius: 0.25rem;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.125rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .badge-primary {
+    background-color: var(--color-primary);
+    color: var(--color-navy-dark);
+  }
+
+  .badge-sale {
+    background-color: #df3737;
+    color: white;
+  }
+
+  .badge-new {
+    background-color: #00c9a7;
+    color: white;
+  }
+
+  .section-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 0.625rem;
+  }
+
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background-color: var(--color-primary);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.625rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* ── Product card hover shadow ── */
+.product-item {
+  height: 100%;
+}
+
+/* Nav Classic (section tab pills) */
+.nav-classic {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.nav-classic .nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8c98a4;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  white-space: nowrap;
+}
+
+.nav-classic .nav-link:hover {
+  color: #333e48;
+}
+
+.nav-classic .nav-link.active {
+  color: #333e48;
+  border-bottom-color: #fed700;
+  font-weight: 700;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Price formatting */
+.price {
+  font-weight: 700;
+  color: var(--color-navy);
+  font-size: 1rem;
+}
+
+.price-sale {
+  color: #df3737;
+}
+
+.price-compare {
+  text-decoration: line-through;
+  color: var(--color-muted);
+  font-weight: 400;
+  font-size: 0.8125rem;
+}

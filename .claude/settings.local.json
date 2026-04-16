@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:electro.hasthemes.com)",
+      "WebFetch(domain:themeforest.net)",
+      "WebFetch(domain:transvelo.github.io)",
+      "Bash(curl -s \"https://transvelo.github.io/electro-html/2.0/html/home/index.html\")",
+      "Bash(curl -s \"https://transvelo.github.io/electro-html/2.0/assets/css/theme.css\")",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(nvm use *)",
+      "Bash(\"/c/Users/User/AppData/Roaming/nvm/v20.20.2/node.exe\" --version)",
+      "Bash(export PATH=\"/c/Users/User/AppData/Roaming/nvm/v20.20.2:$PATH\")",
+      "Bash(taskkill /PID 27240 /F)",
+      "Bash(echo \"PID: $!\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001)",
+      "Bash(cmd.exe /c \"taskkill /PID 27240 /F\")",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('New Collection'\\) print\\(html[max\\(0,idx-100\\):idx+1500]\\) \")",
+      "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('pills-tab\\\\\"'\\) print\\(html[max\\(0,idx-600\\):idx+200]\\) \")"
+    ]
+  }
+}
