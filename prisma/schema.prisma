@@ -4,19 +4,18 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String      @unique
   emailVerified DateTime?
   image         String?
   password      String?
   phone         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
   accounts      Account[]
   sessions      Session[]
   orders        Order[]
@@ -58,41 +57,104 @@ model VerificationToken {
 }
 
 model Category {
+  id             String        @id @default(cuid())
+  name           String
+  slug           String        @unique
+  description    String?
+  image          String?
+  icon           String?       // emoji or icon name for nav display
+  sortOrder      Int           @default(0)
+  active         Boolean       @default(true)
+  products       Product[]
+  subcategories  SubCategory[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model SubCategory {
   id          String    @id @default(cuid())
   name        String
   slug        String    @unique
   description String?
   image       String?
+  categoryId  String
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   products    Product[]
   createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([categoryId])
 }
 
 model Product {
-  id           String      @id @default(cuid())
-  name         String
-  slug         String      @unique
-  description  String
-  price        Float
-  comparePrice Float?
-  stock        Int         @default(0)
-  brand        String
-  sku          String      @unique
-  images       String[]
-  specs        Json        @default("{}")
-  tags         String[]    @default([])
-  featured     Boolean     @default(false)
-  weight       Float?
-  metaTitle    String?
-  metaDesc     String?
-  categoryId   String
-  category     Category    @relation(fields: [categoryId], references: [id])
-  orderItems   OrderItem[]
-  savedBy      SavedItem[]
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
+  id             String       @id @default(cuid())
+  name           String
+  slug           String       @unique
+  description    String
+  price          Float
+  comparePrice   Float?
+  stock          Int          @default(0)
+  brand          String
+  model          String?      // e.g. "Galaxy S24 Ultra"
+  variant        String?      // e.g. "256GB / 12GB RAM"
+  keyFeature     String?      // e.g. "AI Camera, Titanium Gray"
+  sku            String       @unique
+  images         String[]
+  specs          Json         @default("{}")
+  tags           String[]     @default([])
+
+  // Section flags — controlled from admin
+  featured       Boolean      @default(false)
+  hotDeal        Boolean      @default(false)
+  newArrival     Boolean      @default(false)
+  onSale         Boolean      @default(false)
+
+  // Product attributes
+  condition      String       @default("new")   // new | refurbished | used
+  warranty       String?      // e.g. "1 Year Official Warranty"
+  deliveryInfo   String?      // e.g. "Same Day Delivery in Nairobi"
+
+  // SEO fields
+  titleTemplate  String?      // price_focus | spec_focus | trust_focus | review_focus | custom
+  metaTitle      String?      // manual override
+  metaDesc       String?      // 160-char snippet
+  imageAltText   String?
+
+  // Relationships
+  categoryId     String
+  category       Category     @relation(fields: [categoryId], references: [id])
+  subcategoryId  String?
+  subcategory    SubCategory? @relation(fields: [subcategoryId], references: [id])
+  orderItems     OrderItem[]
+  savedBy        SavedItem[]
+  views          ProductView[]
+
+  weight         Float?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 
   @@index([categoryId])
+  @@index([subcategoryId])
   @@index([slug])
+  @@index([featured])
+  @@index([hotDeal])
+  @@index([newArrival])
+  @@index([onSale])
+}
+
+// Drives homepage sections — admin configures which sections appear and in what order
+model Section {
+  id           String   @id @default(cuid())
+  title        String   // e.g. "Hot Deals"
+  slug         String   @unique // e.g. "hot-deals"
+  type         String   // hot_deal | new_arrival | on_sale | featured | category | all
+  categorySlug String?  // for type="category", which category to pull from
+  sortOrder    Int      @default(0)
+  active       Boolean  @default(true)
+  maxItems     Int      @default(8)
+  showTabs     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Order {
@@ -137,6 +199,30 @@ model SavedItem {
   createdAt DateTime @default(now())
 
   @@unique([userId, productId])
+}
+
+model ProductView {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sessionId String?
+  userId    String?
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+  @@index([createdAt])
+}
+
+model SiteVisit {
+  id        String   @id @default(cuid())
+  sessionId String
+  path      String
+  userId    String?
+  referrer  String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([sessionId])
 }
 
 enum OrderStatus {

@@ -38,6 +38,9 @@ interface SearchParams {
   maxPrice?: string;
   q?: string;
   featured?: string;
+  hotDeal?: string;
+  newArrival?: string;
+  onSale?: string;
   page?: string;
   sort?: string;
 }
@@ -70,7 +73,10 @@ async function ProductGrid({ searchParams }: { searchParams: SearchParams }) {
           },
         }
       : {}),
-    ...(searchParams.featured === "true" && { featured: true }),
+    ...(searchParams.featured  === "true" && { featured:   true }),
+    ...(searchParams.hotDeal   === "true" && { hotDeal:    true }),
+    ...(searchParams.newArrival === "true" && { newArrival: true }),
+    ...(searchParams.onSale    === "true" && { onSale:     true }),
     ...(searchParams.q && {
       OR: [
         { name: { contains: searchParams.q, mode: "insensitive" as const } },
@@ -139,7 +145,7 @@ async function ProductGrid({ searchParams }: { searchParams: SearchParams }) {
   return (
     <div>
       <div
-        className="grid grid-cols-2 md:grid-cols-3 mb-6"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-6"
         style={{ borderTop: "1px solid #eeeeee", borderLeft: "1px solid #eeeeee" }}
       >
         {products.map((p) => (
@@ -200,9 +206,11 @@ export default async function ProductsPage({
     ? activeCategory.name
     : params.q
       ? `Search: "${params.q}"`
-      : params.featured === "true"
-        ? "Hot Deals"
-        : "All Products";
+      : params.featured  === "true" ? "Featured Products"
+      : params.hotDeal   === "true" ? "Hot Deals"
+      : params.newArrival === "true" ? "New Arrivals"
+      : params.onSale    === "true" ? "On Sale"
+      : "All Products";
 
   return (
     <div className="max-w-[1400px] mx-auto px-4 py-6">
@@ -254,7 +262,7 @@ export default async function ProductsPage({
           <Suspense
             fallback={
               <div
-                className="grid grid-cols-2 md:grid-cols-3"
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
                 style={{ borderTop: "1px solid #eeeeee", borderLeft: "1px solid #eeeeee" }}
               >
                 {Array.from({ length: 6 }).map((_, i) => (

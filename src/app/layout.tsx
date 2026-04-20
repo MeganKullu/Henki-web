@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -162,13 +163,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-KE" className={`${openSans.variable} h-full`}>
-      <head>
-        <script
+      <body className="min-h-full flex flex-col bg-white text-[#333e48] antialiased">
+        <Script
+          id="org-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+          strategy="beforeInteractive"
         />
-      </head>
-      <body className="min-h-full flex flex-col bg-white text-[#333e48] antialiased">
         {children}
         <Toaster
           position="bottom-right"

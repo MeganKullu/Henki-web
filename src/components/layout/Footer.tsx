@@ -9,7 +9,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#333e48] text-gray-300 mt-8">
+    <footer className="bg-[#1e3a5c] text-gray-300 mt-8">
 
       {/* Newsletter bar */}
       <div className="bg-[#fed700]">
@@ -33,7 +33,7 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="h-10 px-5 bg-[#333e48] hover:bg-[#1e2022] text-white text-sm font-bold uppercase rounded-r transition-colors whitespace-nowrap"
+              className="h-10 px-5 bg-[#1e3a5c] hover:bg-[#162d47] text-white text-sm font-bold uppercase rounded-r transition-colors whitespace-nowrap"
             >
               Subscribe
             </button>
@@ -178,7 +178,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
+      <div className="bg-[#162d47] border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
           <span className="text-xs text-gray-500">
             © {new Date().getFullYear()} Henki Electronics. All rights reserved.

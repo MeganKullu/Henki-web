@@ -59,32 +59,38 @@ export default function Header() {
   return (
     <>
       {/* ── TIER 1: Top bar ──────────────────────────────────────── */}
-      <div className="bg-white border-b border-[#e8e8e8] hidden xl:block">
+      <div className="bg-[#1e3a5c] hidden xl:block">
         <div className="max-w-[1400px] mx-auto px-4 h-9 flex items-center justify-between">
-          <span className="text-[13px] text-[#8c98a4]">
+          <span className="text-[13px] text-gray-400">
             Welcome to Henki Electronics — Kenya&apos;s Premium Store
           </span>
           <div className="flex items-center gap-0">
             <Link
               href="/contact"
-              className="flex items-center gap-1 text-[13px] text-[#8c98a4] hover:text-[#fed700] px-3 border-r border-[#e8e8e8] h-9 transition-colors"
+              className="flex items-center gap-1 text-[13px] text-gray-400 hover:text-[#fed700] px-3 border-r border-white/10 h-9 transition-colors"
             >
               <MapPin size={13} />
               Store Locator
             </Link>
             <Link
               href="/account/orders"
-              className="flex items-center gap-1 text-[13px] text-[#8c98a4] hover:text-[#fed700] px-3 border-r border-[#e8e8e8] h-9 transition-colors"
+              className="flex items-center gap-1 text-[13px] text-gray-400 hover:text-[#fed700] px-3 border-r border-white/10 h-9 transition-colors"
             >
               <Truck size={13} />
               Track Your Order
             </Link>
             <Link
+              href="/account/register"
+              className="flex items-center gap-1 text-[13px] text-gray-400 hover:text-[#fed700] px-3 border-r border-white/10 h-9 transition-colors"
+            >
+              Register
+            </Link>
+            <Link
               href="/account"
-              className="flex items-center gap-1 text-[13px] text-[#8c98a4] hover:text-[#fed700] px-3 h-9 transition-colors"
+              className="flex items-center gap-1 text-[13px] text-[#fed700] hover:text-yellow-300 px-3 h-9 transition-colors font-semibold"
             >
               <User size={13} />
-              Register or Sign in
+              Sign In
             </Link>
           </div>
         </div>
@@ -123,7 +129,7 @@ export default function Header() {
             {/* Search bar */}
             <form
               action="/products"
-              className="flex-1 hidden md:flex items-stretch max-w-2xl"
+              className="flex-1 hidden md:flex items-stretch"
             >
               <select
                 name="category"
@@ -193,7 +199,7 @@ export default function Header() {
                 <div className="relative">
                   <ShoppingCart size={22} className="text-[#333e48]" />
                   {count > 0 && (
-                    <span className="absolute -top-2 -right-2 w-5 h-5 bg-[#333e48] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                    <span className="absolute -top-2 -right-2 w-5 h-5 bg-[#1e3a5c] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                       {count > 9 ? "9+" : count}
                     </span>
                   )}
@@ -227,7 +233,7 @@ export default function Header() {
       </div>
 
       {/* ── TIER 3: Category nav ─────────────────────────────────── */}
-      <nav className="bg-[#333e48] sticky top-0 z-50 hidden xl:block">
+      <nav className="bg-[#1e3a5c] sticky top-0 z-50 hidden xl:block">
         <div className="max-w-[1400px] mx-auto px-4">
           <ul className="flex items-center">
 

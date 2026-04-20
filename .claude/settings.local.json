@@ -21,7 +21,20 @@
       "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('New Collection'\\) print\\(html[max\\(0,idx-100\\):idx+1500]\\) \")",
       "Bash(python3 -c \" import sys html = sys.stdin.read\\(\\) idx = html.find\\('pills-tab\\\\\"'\\) print\\(html[max\\(0,idx-600\\):idx+200]\\) \")",
       "Bash(taskkill /F /IM node.exe)",
-      "Bash(curl -s http://localhost:3001)"
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(mkdir -p \"C:/Users/User/Desktop/Henki/henki-admin/src/app/api/products\")",
+      "Bash(mkdir -p \"C:/Users/User/Desktop/Henki/henki-admin/src/app/api/products/[id]\")",
+      "Bash(mkdir -p \"C:/Users/User/Desktop/Henki/henki-admin/src/app/api/categories\")",
+      "Bash(mkdir -p \"C:/Users/User/Desktop/Henki/henki-admin/src/app/api/categories/[id]\")",
+      "Bash(mkdir -p \"C:/Users/User/Desktop/Henki/henki-admin/src/app/api/sections\")",
+      "Bash(cmd.exe *)",
+      "Bash(powershell.exe *)",
+      "Read(//c/Users/User/Desktop/Henki/henki-admin/prisma/**)",
+      "Bash(npx prisma *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('@neondatabase/serverless'\\); console.log\\('ok'\\)\")",
+      "Bash(node -e \"const {neonConfig, Pool} = require\\('@neondatabase/serverless'\\); console.log\\(typeof Pool\\)\")",
+      "Bash(node -e ' *)"
     ]
   }
 }

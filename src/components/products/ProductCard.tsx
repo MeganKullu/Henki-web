@@ -20,7 +20,10 @@ interface ProductCardProps {
     images: string[];
     stock: number;
     featured: boolean;
-    category: { name: string };
+    hotDeal?: boolean;
+    newArrival?: boolean;
+    onSale?: boolean;
+    category: { name: string; slug?: string };
   };
 }
 
@@ -68,7 +71,13 @@ export default function ProductCard({ product }: ProductCardProps) {
               -{discount}%
             </span>
           )}
-          {product.featured && !discount && product.stock > 0 && (
+          {product.hotDeal && !discount && product.stock > 0 && (
+            <span className="text-white font-bold text-[10px] px-1.5 py-0.5"
+              style={{ background: "#e67e00" }}>
+              HOT
+            </span>
+          )}
+          {product.newArrival && !discount && !product.hotDeal && product.stock > 0 && (
             <span className="text-white font-bold text-[10px] px-1.5 py-0.5"
               style={{ background: "#00c9a7" }}>
               NEW

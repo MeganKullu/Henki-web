@@ -7,7 +7,7 @@ const brands = [
 export default function BrandsBanner() {
   return (
     <section className="border-t border-[#eeeeee] py-8">
-      <div className="max-w-[1200px] mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-4">
         <div className="flex items-center gap-4 mb-5">
           <h2 className="section-title">Top Brands</h2>
         </div>

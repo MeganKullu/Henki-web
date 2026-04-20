@@ -8,6 +8,7 @@ import AddToCartButton from "@/components/products/AddToCartButton";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ProductCard from "@/components/products/ProductCard";
 import ProductJsonLd from "@/components/common/JsonLd";
+import ProductViewTracker from "@/components/analytics/ProductViewTracker";
 import { formatPrice, formatDiscount } from "@/lib/formatters";
 import {
   Shield,
@@ -376,13 +377,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
     if (product) {
       const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://henkielectronics.co.ke";
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const p: any  = product;
+      const title   = (p.metaTitle as string | null) || `${product.name} — ${formatPrice(product.price)} | Henki Electronics`;
+      const desc    = (p.metaDesc  as string | null) || product.description.slice(0, 160);
       return {
-        title: `${product.name} — ${formatPrice(product.price)}`,
-        description: product.description.slice(0, 160),
+        title,
+        description: desc,
         openGraph: {
-          title: product.name,
-          description: product.description.slice(0, 160),
-          images: [{ url: product.images[0], width: 800, height: 800 }],
+          title:       product.name,
+          description: desc,
+          images:      product.images[0] ? [{ url: product.images[0], width: 800, height: 800, alt: (p.imageAltText as string | null) || product.name }] : [],
         },
         alternates: { canonical: `${siteUrl}/products/${slug}` },
       };
@@ -440,22 +445,26 @@ export default async function ProductPage({ params }: Props) {
     ? formatDiscount(product.comparePrice, product.price)
     : null;
 
-  const specs = product.specs as Record<string, string>;
+  const specs = (product.specs ?? {}) as unknown as Record<string, string>;
 
   return (
     <>
+      <ProductViewTracker productId={product.id} />
       <ProductJsonLd
         product={{
-          id: product.id,
-          name: product.name,
-          description: product.description,
-          price: product.price,
+          id:           product.id,
+          name:         product.name,
+          description:  product.description,
+          price:        product.price,
           comparePrice: product.comparePrice,
-          images: product.images,
-          brand: product.brand,
-          sku: product.sku,
-          stock: product.stock,
-          slug: product.slug,
+          images:       product.images,
+          brand:        product.brand,
+          sku:          product.sku,
+          stock:        product.stock,
+          slug:         product.slug,
+          condition:    (product as Record<string, unknown>).condition as string | null,
+          warranty:     (product as Record<string, unknown>).warranty  as string | null,
+          deliveryInfo: (product as Record<string, unknown>).deliveryInfo as string | null,
         }}
       />
 
