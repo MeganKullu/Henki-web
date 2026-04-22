@@ -34,7 +34,9 @@
       "Bash(npm install *)",
       "Bash(node -e \"require\\('@neondatabase/serverless'\\); console.log\\('ok'\\)\")",
       "Bash(node -e \"const {neonConfig, Pool} = require\\('@neondatabase/serverless'\\); console.log\\(typeof Pool\\)\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(git checkout *)",
+      "Bash(xxd \"/c/Users/User/Desktop/Henki/henki-electronics/src/lib/prisma.ts\")"
     ]
   }
 }

@@ -120,10 +120,10 @@ export default function FeaturedProducts({
           className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6"
           style={{ borderTop: "1px solid #eeeeee", borderLeft: "1px solid #eeeeee" }}
         >
-          {shown.map((product) => (
+          {shown.map((product, index) => (
             <div
               key={product.id}
-              className="flex flex-col"
+              className={`flex flex-col${index >= 4 ? " hidden md:flex" : ""}`}
               style={{ borderRight: "1px solid #eeeeee", borderBottom: "1px solid #eeeeee" }}
             >
               <ProductCard product={product} />
