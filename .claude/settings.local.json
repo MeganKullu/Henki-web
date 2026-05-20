@@ -36,7 +36,9 @@
       "Bash(node -e \"const {neonConfig, Pool} = require\\('@neondatabase/serverless'\\); console.log\\(typeof Pool\\)\")",
       "Bash(node -e ' *)",
       "Bash(git checkout *)",
-      "Bash(xxd \"/c/Users/User/Desktop/Henki/henki-electronics/src/lib/prisma.ts\")"
+      "Bash(xxd \"/c/Users/User/Desktop/Henki/henki-electronics/src/lib/prisma.ts\")",
+      "Bash(node -e \"const c = require\\('@prisma/client'\\); console.log\\(Object.keys\\(c\\).filter\\(k => k.toLowerCase\\(\\).includes\\('prisma'\\)\\)\\)\")",
+      "Bash(node -e \"const a = require\\('@prisma/adapter-neon'\\); console.log\\(Object.keys\\(a\\)\\)\")"
     ]
   }
 }
