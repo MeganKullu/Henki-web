@@ -168,7 +168,7 @@ export default function Header() {
                 </div>
                 <div className="leading-none">
                   <div className="text-[11px] text-[#8c98a4]">Call Us Now</div>
-                  <div className="text-[13px] font-bold text-[#333e48]">0700 000 000</div>
+                  <div className="text-[13px] font-bold text-[#333e48]">0728 200 018</div>
                 </div>
               </div>
 

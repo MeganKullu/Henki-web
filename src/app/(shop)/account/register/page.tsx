@@ -96,7 +96,7 @@ export default function RegisterPage() {
 
             {field(<User size={15} />, "Full Name", "name", "text", "John Kamau")}
             {field(<Mail size={15} />, "Email Address", "email", "email", "you@example.com")}
-            {field(<Phone size={15} />, "Phone (optional)", "phone", "tel", "+254 700 000 000")}
+            {field(<Phone size={15} />, "Phone (optional)", "phone", "tel", "+254 728 200 018")}
 
             {/* Password */}
             <div>

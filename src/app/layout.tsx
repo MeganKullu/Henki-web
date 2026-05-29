@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+import ToastProvider from "@/components/common/ToastProvider";
 import Script from "next/script";
 
 const openSans = Open_Sans({
@@ -93,7 +93,7 @@ const orgSchema = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+254700000000",
+        telephone: "+254728200018",
         contactType: "customer service",
         areaServed: "KE",
         availableLanguage: "English",
@@ -123,7 +123,7 @@ const orgSchema = {
       "@id": `${SITE_URL}/#localbusiness`,
       name: "Henki Electronics",
       image: `${SITE_URL}/og-image.jpg`,
-      telephone: "+254700000000",
+      telephone: "+254728200018",
       email: "support@henkielectronics.co.ke",
       address: {
         "@type": "PostalAddress",
@@ -171,22 +171,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
         {children}
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: "#333e48",
-              color: "#fff",
-              borderRadius: "4px",
-              fontWeight: "500",
-              fontSize: "14px",
-            },
-            success: {
-              iconTheme: { primary: "#fed700", secondary: "#333e48" },
-            },
-          }}
-        />
+        <ToastProvider />
       </body>
     </html>
   );

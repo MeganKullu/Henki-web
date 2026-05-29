@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254700000000";
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254728200018";
 
 export function buildWhatsAppUrl(product: {
   name: string;

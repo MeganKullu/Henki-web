@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://henkielectronics.co.ke/contact" },
 };
 
-const WA_URL = "https://wa.me/254700000000?text=" + encodeURIComponent("Hi Henki Electronics, I need help with:");
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254728200018";
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=` + encodeURIComponent("Hi Henki Electronics, I need help with:");
 
 export default function ContactPage() {
   return (
@@ -35,7 +36,7 @@ export default function ContactPage() {
                 {
                   icon: <Phone size={16} className="text-[#fed700]" />,
                   label: "Phone / WhatsApp",
-                  value: "+254 700 000 000",
+                  value: "+254 728 200 018",
                   href: WA_URL,
                 },
                 {
@@ -47,7 +48,7 @@ export default function ContactPage() {
                 {
                   icon: <MapPin size={16} className="text-[#fed700]" />,
                   label: "Store Address",
-                  value: "Westlands, Nairobi, Kenya",
+                  value: "Imenti House, Nairobi, Kenya",
                   href: "https://maps.google.com/?q=Westlands,Nairobi",
                 },
                 {

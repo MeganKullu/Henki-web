@@ -1,6 +1,6 @@
 "use client";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254700000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254728200018";
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi Henki Electronics! I'd like to enquire about your products.")}`;
 
 export default function WhatsAppFloat() {

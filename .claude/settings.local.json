@@ -38,7 +38,11 @@
       "Bash(git checkout *)",
       "Bash(xxd \"/c/Users/User/Desktop/Henki/henki-electronics/src/lib/prisma.ts\")",
       "Bash(node -e \"const c = require\\('@prisma/client'\\); console.log\\(Object.keys\\(c\\).filter\\(k => k.toLowerCase\\(\\).includes\\('prisma'\\)\\)\\)\")",
-      "Bash(node -e \"const a = require\\('@prisma/adapter-neon'\\); console.log\\(Object.keys\\(a\\)\\)\")"
+      "Bash(node -e \"const a = require\\('@prisma/adapter-neon'\\); console.log\\(Object.keys\\(a\\)\\)\")",
+      "Bash(cat next.config.ts)",
+      "Bash(cat next.config.js)",
+      "Bash(cat next.config.mjs)",
+      "Bash(node -e \"console.log\\(require\\('react/package.json'\\).version\\)\")"
     ]
   }
 }

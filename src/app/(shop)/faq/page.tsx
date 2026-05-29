@@ -18,7 +18,7 @@ const FAQS = [
       },
       {
         q: "Can I buy via WhatsApp?",
-        a: "Absolutely. Just click any 'Buy via WhatsApp' button on a product page or contact us on +254 700 000 000. We'll guide you through the order and send payment details.",
+        a: "Absolutely. Just click any 'Buy via WhatsApp' button on a product page or contact us on +254 728 200 018. We'll guide you through the order and send payment details.",
       },
       {
         q: "How do I track my order?",
