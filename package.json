@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cross-env NODE_ENV=production next build",
+    "build": "prisma generate && cross-env NODE_ENV=production next build",
+    "postinstall": "prisma generate",
     "start": "next start -p 3016",
     "lint": "eslint",
     "db:push": "prisma db push",
